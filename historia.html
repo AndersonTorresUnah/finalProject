@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciudad Blanca, Honduras</title>
+
+    <!-- Enlaces a las bibliotecas Leaflet y Bootstrap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166);
+            font-size: 14px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            width: 100%;
+            height: 150px;
+            background: url('/16924fd5-16e9-4977-b508-4fc59150fb99.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .history-section {
+            width: 80%;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            text-align: left;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .history-section img.place-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .history-content {
+            text-align: justify;
+            line-height: 1.6;
+            max-height: 200px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .read-more-btn {
+            cursor: pointer;
+            color: #4CAF50;
+            text-decoration: underline;
+        }
+
+        /* Estilos adicionales */
+
+        footer {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: space-around;
+            color: #fff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="history-section">
+        <img src="/Imagenes/Ciudad blanca.jpg" alt="Ciudad Blanca, Honduras" class="place-image">
+        <center><h2>Ciudad Blanca, Honduras</h2></center>
+        <div class="history-content" id="historyContent">
+            <p>
+                Ciudad Blanca es una leyenda de una ciudad perdida en la selva del Mosquitia, en Honduras.
+                También conocida como la Ciudad del Dios Mono, se cree que fue una antigua ciudad precolombina,
+                aunque su existencia aún es objeto de debate y misterio.
+            </p>
+            <p>
+                La leyenda ha atraído a exploradores y arqueólogos a la región en busca de sus ruinas,
+                pero hasta el momento, la Ciudad Blanca permanece esquiva, envuelta en mito y enigmas.
+            </p>
+        </div>
+        <strong><p class="read-more-btn" onclick="toggleReadMore()">Leer más</p></strong>
+
+        <br>
+        <footer>
+            <div class="footer-icons">
+                <i class="fas fa-home" id="casa" onclick="irAPagina('app.html')"></i>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function irAPagina(pagina) {
+            window.location.href = pagina;
+        }
+
+        function toggleReadMore() {
+            var content = document.getElementById("historyContent");
+            var btn = document.querySelector(".read-more-btn");
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                btn.innerHTML = "Leer más";
+            } else {
+                content.style.maxHeight = "200px";
+                btn.innerHTML = "Leer menos";
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/9f183085cb.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

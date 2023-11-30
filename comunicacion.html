@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat de Realidad Aumentada</title>
+
+    <!-- Enlaces a las bibliotecas Leaflet y Bootstrap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166);
+            font-size: 16px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-section {
+            width: 80%;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .chat-box {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .user-message, .other-message {
+            display: inline-block;
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .user-message {
+            background: #6E48AA;
+            color: #fff;
+            text-align: left;
+        }
+
+        .other-message {
+            background: #333;
+            color: #ddd;
+            text-align: right;
+        }
+
+        .message-input {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .send-button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #FFD166;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Estilos adicionales */
+
+        footer {
+            margin-top: 20px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: space-around;
+            color: #fff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-section">
+        <div class="chat-box" id="chatBox">
+            <!-- Aquí se mostrarán los mensajes -->
+            <div class="other-message">¡Hola! ¿Cómo estás?</div>
+            <div class="user-message">¡Hola! Todo bien, gracias.</div>
+            <!-- Mensajes adicionales -->
+        </div>
+
+        <!-- Entrada de texto para mensajes -->
+        <input type="text" class="message-input" id="messageInput" placeholder="Escribe tu mensaje...">
+        
+        <!-- Botón para enviar mensajes -->
+        <button class="send-button" onclick="enviarMensaje()">Enviar</button>
+
+        <!-- Footer con iconos -->
+        <footer>
+            <div class="footer-icons">
+                <i class="fas fa-home" id="casa" onclick="irAPagina('app.html')"></i>
+            </div>
+        </footer>
+        <!-- Fin del footer -->
+    </div>
+
+    <!-- Script para ir a el apartado inicial de la plataforma-->
+    <script>
+        function irAPagina(pagina) {
+            window.location.href = pagina;
+        }
+
+        // Función para enviar un mensaje
+        function enviarMensaje() {
+            var messageInput = document.getElementById('messageInput');
+            var chatBox = document.getElementById('chatBox');
+
+            var message = messageInput.value;
+            if (message.trim() !== '') {
+                var newMessage = document.createElement('div');
+                newMessage.className = 'user-message';
+                newMessage.textContent = message;
+
+                chatBox.appendChild(newMessage);
+
+                // También podrías hacer una llamada a una función de envío de mensajes aquí
+                // Por ahora, simplemente limpiamos el cuadro de entrada
+                messageInput.value = '';
+
+                // Simulamos una respuesta después de un breve tiempo
+                setTimeout(function() {
+                    var response = document.createElement('div');
+                    response.className = 'other-message';
+                    response.textContent = '¡Eso suena genial!';
+                    response.className = 'other-message';
+                    response.textContent = '¡Yo muy bien, que tal las clases?';
+
+                    chatBox.appendChild(response);
+                }, 1000);
+            }
+        }
+    </script>
+
+    <!-- Enlace al script de Bootstrap y Font Awesome -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/9f183085cb.js" crossorigin="anonymous"></script>
+</body>
+</html>

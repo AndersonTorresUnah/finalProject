@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <!-- Añadir esto en la sección head -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166); /* Mejorado degradado */
+            font-size: 14px;
+        }
+
+        .login-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0,0,0,.6);
+            border-radius: 10px;
+            text-align: center; /* Centra el contenido */
+        }
+
+        .login-box img {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .login-box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+        }
+
+        .login-box .user-box {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .login-box .user-box input {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+        }
+
+        .login-box .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .login-box .user-box input:focus ~ label,
+        .login-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+
+        .login-box form #boton {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: #03e9f4;
+            font-size: 14px; /* Tamaño reducido para "Iniciar Sesión" y "Registrarse" */
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .login-box #boton:hover {
+            background: #03e9f4;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4,
+                        0 0 25px #03e9f4,
+                        0 0 50px #03e9f4,
+                        0 0 100px #03e9f4;
+        }
+
+        .login-box #boton span {
+            display: none;
+        }
+
+        /* Estilos específicos para "¿Has olvidado la contraseña?" */
+        .login-box .forgot-password {
+            text-align: center;
+            margin-top: 10px; /* Ajustado para mejor apariencia */
+            font-size: 12px; /* Tamaño de letra reducido */
+            color: #fff;
+        }
+
+        /* Estilos para la imagen del logo */
+        .login-box img.logo {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para la imagen de "Traducir" */
+        .login-box img.translate {
+            width: 30%; /* Ajusta el tamaño según sea necesario */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /*.checkbox {
+            display: flex;
+            align-items: center;
+        }*/
+
+        /*.checkbox input {
+            margin-right: 5px; /* Ajusta el espacio entre el checkbox y el label según tus preferencias */
+        /*}*/
+
+
+
+    </style>
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+    crossorigin="anonymous">-->
+</head>
+
+<!--***************************************************************************************************
+*******************************************************************************************************
+*******************************************************************************************************-->
+
+<body>
+  
+    <div class="login-box">
+
+        <!-- Imagen del logo -->
+        <img src="/16924fd5-16e9-4977-b508-4fc59150fb99.png" alt="Logo Cultural Education" class="logo">
+        
+        <!-- Imagen de "Traducir" -->
+        <img src="/50b72e4c-f694-42ac-9877-7d6c9be28f4b.png" alt="Traducir" class="translate">
+    
+        <form action="/registro" method="post">
+          <div class="user-box">
+              <input type="text" id="username" name="username" required>
+              <label for="username">Nombre de usuario</label>
+          </div>
+      
+          <div class="user-box">
+            <input type="email" id="email" name="email" required>
+            <label for="email">Email</label>
+        </div>
+      
+          <div class="user-box">
+              <input type="tel" id="phone" name="phone" required>
+              <label for="phone">Número de teléfono</label>
+          </div>
+      
+          <div class="user-box">
+              <input type="password" id="password" name="password" required>
+              <label for="password">Contraseña</label>
+          </div>
+      
+          <div class="user-box">
+              <input type="password" id="confirm-password" name="confirm-password" required>
+              <label for="confirm-password">Confirmar Contraseña</label>
+          </div>
+
+          <div class="login-link">
+              <a id="boton" href="/Index.html">Registrarse</a>
+          </div>
+
+          <div class="">
+            <a style="color: white; text-decoration: none;" id="Iniciar sesion" 
+            href="/Index.html">¿Ya tienes una cuenta? Iniciar Sesión</a>
+          </div>
+    
+      </form>
+    </div>
+    
+    <!--<script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+        crossorigin="anonymous">
+    </script>-->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('boton').addEventListener('click', function (event) {
+            // Evitar la redirección automática
+            event.preventDefault();
+    
+            // Obtener los valores de los campos antes de mostrar la alerta
+            var userNameValue = document.querySelector('[name="username"]').value;
+            var emailValue = document.querySelector('[name="email"]').value;  // Corregido el nombre del campo
+            var phoneValue = document.querySelector('[name="phone"]').value;
+            var passwordValue = document.querySelector('[name="password"]').value;
+            var confirmPasswordValue = document.querySelector('[name="confirm-password"]').value;  // Corregido el nombre del campo
+    
+            Swal.fire({
+                icon: 'success',
+                title: '¡Registro exitoso!',
+                text: 'Usuario registrado correctamente. ¡Bienvenido!',
+                showConfirmButton: false,
+                timer: 2000  // La ventana emergente se cerrará automáticamente después de 2 segundos
+            }).then((result) => {
+                // Limpiar los campos de entrada después de cerrar la alerta
+                document.querySelector('[name="username"]').value = '';
+                document.querySelector('[name="email"]').value = '';
+                document.querySelector('[name="phone"]').value = '';
+                document.querySelector('[name="password"]').value = '';
+                document.querySelector('[name="confirm-password"]').value = '';
+    
+                // Redirigir a la página (o puedes manejarlo desde el backend)
+                window.location.href = "/Index.html";
+            });
+        });
+    </script>
+    
+</body>
+</html>

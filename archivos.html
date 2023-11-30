@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivos de Realidad Aumentada</title>
+
+    <!-- Enlaces a las bibliotecas Leaflet y Bootstrap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166);
+            font-size: 16px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .file-section {
+            width: 80%;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.7);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .file-section img.logo {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #FFD166;
+        }
+
+        p {
+            color: #ddd;
+        }
+
+        .file-images {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .file-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .file-image:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilos adicionales */
+
+        footer {
+            margin-top: 40px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: space-around;
+            color: #fff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="file-section">
+        <!-- Imagen del logo -->
+        <img src="/16924fd5-16e9-4977-b508-4fc59150fb99.png" alt="Logo Cultural Education" class="logo">
+        
+        <h2>Archivos de Realidad Aumentada</h2>
+        <p>Aquí se encuentran los archivos de Realidad Aumentada disponibles 
+            sobre nuestras experiencias.
+        </p>
+
+        <!-- Imágenes de archivos -->
+        <div class="file-images">
+            <img class="file-image" src="/Imagenes/Piramide.png" alt="Piramide" onclick="abrirImagen('imagen1.jpg')">
+            <img class="file-image" src="/Imagenes/Cuevas.jpg" alt="Cueva" onclick="abrirImagen('imagen2.jpg')">
+            <!-- Puedes agregar más imágenes según sea necesario -->
+        </div>
+
+        <!-- Footer con iconos -->
+        <footer>
+            <div class="footer-icons">
+                <!--<i class="fas fa-user" id="perfilUsuario"></i>-->
+                <i class="fas fa-home" id="casa" onclick="irAPagina('app.html')"></i>
+                <!--<i class="fas fa-bars"></i>-->
+            </div>
+        </footer>
+        <!-- Fin del footer -->
+    </div>
+
+    <!-- Script para ir a el apartado inicial de la plataforma-->
+    <script>
+        function irAPagina(pagina) {
+            window.location.href = pagina;
+        }
+
+        // Función para abrir una imagen al hacer clic en ella
+        function abrirImagen(imagen) {
+            // Puedes agregar la lógica necesaria para mostrar la imagen en un visor o modal aquí
+            console.log('Abriendo imagen:', imagen);
+        }
+    </script>
+
+    <!-- Enlace al script de Bootstrap (puedes ajustar la versión según tus necesidades) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/9f183085cb.js" crossorigin="anonymous"></script>
+</body>
+</html>

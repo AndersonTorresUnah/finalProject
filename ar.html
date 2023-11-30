@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Cámara</title>
+    
+    <!-- Enlace a la hoja de estilos -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Enlaces a las bibliotecas Font Awesome y Bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.camera-app {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+header {
+    background: url('/Imagenes/elemento 20.png') no-repeat center center fixed;
+    background-size: cover;
+    flex-grow: 1; /* Cubre todo el espacio disponible */
+}
+
+footer {
+    background: #333;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.footer-icons {
+    display: flex;
+}
+
+footer i {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 75px;
+    margin-left: 150px; /* Ajusta el espacio entre los iconos según sea necesario */
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="camera-app">
+        <header>
+            <!-- Espacio cubierto en lugar de texto -->
+        </header>
+
+        <footer>
+            <div class="footer-icons">
+                <!-- Iconos del footer -->
+                <i class="fas fa-door-open" onclick="irAPagina('app.html')"></i>
+                <i class="fas fa-circle" id="tomarFoto" onclick="tomarFoto()"></i>
+                <i class="fas fa-images" onclick="verImagenes()"></i>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Enlace al script de Bootstrap y Font Awesome -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/9f183085cb.js" crossorigin="anonymous"></script>
+
+    <!-- Script personalizado para las acciones de los iconos -->
+    <script>
+        function irAPagina(pagina) {
+            // Lógica para redirigir a la página especificada
+            window.location.href = pagina;
+        }
+    </script>
+</body>
+</html>

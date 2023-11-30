@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperación de la cuenta</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166); /* Mejorado degradado */
+            font-size: 14px;
+        }
+
+        .login-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0,0,0,.6);
+            border-radius: 10px;
+            text-align: center; /* Centra el contenido */
+        }
+
+        .login-box img {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .login-box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+        }
+
+        .login-box .user-box {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .login-box .user-box input {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+        }
+
+        .login-box .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 1px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .login-box .user-box input:focus ~ label,
+        .login-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+
+        .login-box #botonSiguiente {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: #03e9f4;
+            font-size: 14px; /* Tamaño  */
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .login-box #botonSiguiente:hover {
+            background: #03e9f4;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4,
+                        0 0 25px #03e9f4,
+                        0 0 50px #03e9f4,
+                        0 0 100px #03e9f4;
+        }
+
+        .login-box #botonSiguiente span {
+            display: none;
+        }
+
+        /* Estilos específicos para "¿Has olvidado la contraseña?" */
+        .login-box .forgot-password {
+            text-align: center;
+            margin-top: 10px; /* Ajustado para mejor apariencia */
+            font-size: 2px; /* Tamaño de letra reducido */
+            color: #fff;
+        }
+
+        /* Estilos para la imagen del logo */
+        .login-box img.logo {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para la imagen de "Traducir" */
+        .login-box img.translate {
+            width: 30%; /* Ajusta el tamaño según sea necesario */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Nuevos estilos para la recuperación de cuenta */
+        .login-box h1 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: red;
+        }
+
+        .login-box .user-box {
+            margin-bottom: 20px;
+        }
+
+        .login-box .user-box input {
+            border-bottom: 1px solid #fff;
+        }
+
+        .login-box .user-box input:focus ~ label,
+        .login-box .user-box input:valid ~ label {
+            top: -20px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+    </style>
+    <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" 
+        crossorigin="anonymous">-->
+</head>
+
+<body>
+  
+    <div class="login-box">
+
+        <!-- Imagen del logo -->
+        <img src="/16924fd5-16e9-4977-b508-4fc59150fb99.png" alt="Logo Cultural Education" class="logo">
+        
+        <!-- Imagen de "Traducir" -->
+        <img src="/50b72e4c-f694-42ac-9877-7d6c9be28f4b.png" alt="Traducir" class="translate">
+
+        <!-- Cambiado a "Recuperación de la cuenta" -->
+        <h1>Recuperación de la cuenta</h1>
+
+        <!-- Nueva sección para la recuperación de cuenta -->
+        <div class="user-box">
+            <input type="password" id="lastPassword" required>
+            <label for="lastPassword">Introduce la última contraseña</label>
+        </div>
+
+        <!-- Botones y enlaces adaptados para la recuperación de cuenta -->
+        
+        <div class="login-link">
+            <a id="botonSiguiente" href="/cambiarContraseña.html">Siguiente</a>
+        </div>
+
+        <div class="user-box">
+            <a style="color: white; text-decoration: none;" 
+            href="/recuperarContraseña2.html">Probar otra manera</a>
+        </div>
+    
+    </div>
+
+    <!--<script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+        crossorigin="anonymous">
+    </script>-->
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script>
+        
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realidad Aumentada - Culturas en Honduras</title>
+
+    <!-- Enlaces a las bibliotecas Leaflet y Bootstrap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166);
+            font-size: 14px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            width: 100%;
+            height: 150px;
+            background: url('/16924fd5-16e9-4977-b508-4fc59150fb99.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .ar-section {
+            width: 80%;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .menu-item {
+            width: 200px;
+            height: 250px; /* Aumenté la altura para dar más espacio a los títulos */
+            background-color: #4CAF50;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            background-color: #45a049;
+        }
+
+        .menu-item img {
+            max-width: 100%;
+            max-height: 70%; /* Reduje la altura de las imágenes */
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item h5 {
+            margin-top: 10px; /* Agregué un margen superior para separar el título de la imagen */
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Estilos adicionales */
+
+        footer {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: space-around;
+            color: #fff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ar-section">
+        <h2>Explora la Cultura con Realidad Aumentada</h2>
+        <p>
+            Selecciona una sección para comenzar tu experiencia.
+        </p>
+
+        <div class="menu-container">
+            <div class="menu-item" onclick="iniciarAR('mayanSection')">
+                <h5>Maya</h5>
+                <img src="/Imagenes/Mayas.jpg" alt="Icono Maya">
+            </div>
+
+            <div class="menu-item" onclick="iniciarAR('garifunaSection')">
+                <h5>Garífuna</h5>
+                <img src="/Imagenes/Garifunas.jpg" alt="Icono Garífuna">
+            </div>
+
+            <div class="menu-item" onclick="iniciarAR('lencaSection')">
+                <h5>Lenca</h5>
+                <img src="/Imagenes/Lencas.jpg" alt="Icono Lenca">
+            </div>
+
+            <!-- Agrega más secciones según sea necesario -->
+        </div>
+
+        <br>
+        <footer>
+            <div class="footer-icons">
+                <i class="fas fa-home" id="casa" onclick="irAPagina('app.html')"></i>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function irAPagina(pagina) {
+            window.location.href = pagina;
+        }
+
+        function iniciarAR(section) {
+            // Aquí puedes agregar la lógica para iniciar la experiencia de realidad aumentada en la sección seleccionada.
+            alert(`Experiencia de Realidad Aumentada iniciada para la sección ${section}`);
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/9f183085cb.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

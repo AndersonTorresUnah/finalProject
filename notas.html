@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notas Interactivas</title>
+
+    <!-- Enlaces a las bibliotecas Leaflet y Bootstrap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166);
+            font-size: 14px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            width: 100%;
+            height: 150px;
+            background: url('/16924fd5-16e9-4977-b508-4fc59150fb99.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .note-section {
+            width: 80%;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .note-section img.logo {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .note-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .note-list-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: left;
+            position: relative;
+        }
+
+        .note-list-item .delete-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: red;
+            cursor: pointer;
+        }
+
+        .note-list-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: space-around;
+            color: #fff;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="note-section">
+        <img src="/16924fd5-16e9-4977-b508-4fc59150fb99.png" alt="Logo Notas Interactivas" class="logo">
+        <ul class="note-list" id="noteList">
+            <!-- Aquí se agregarán dinámicamente las notas -->
+        </ul>
+        <textarea id="newNote" placeholder="Escribe tu nota aquí"></textarea>
+        <button onclick="agregarNota()">Agregar Nota</button>
+
+        <br><br>
+        <footer>
+            <div class="footer-icons">
+                <i class="fas fa-home" id="casa" onclick="irAPagina('app.html')"></i>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function irAPagina(pagina) {
+            window.location.href = pagina;
+        }
+
+        function agregarNota() {
+            var noteText = document.getElementById("newNote").value;
+            if (noteText.trim() !== "") {
+                var noteList = document.getElementById("noteList");
+                var newNoteItem = document.createElement("li");
+                newNoteItem.className = "note-list-item";
+
+                var deleteButton = document.createElement("span");
+                deleteButton.className = "delete-button";
+                deleteButton.innerHTML = "&#10006;";
+                deleteButton.onclick = function () {
+                    noteList.removeChild(newNoteItem);
+                };
+
+                var noteContent = document.createElement("div");
+                noteContent.innerHTML = noteText;
+
+                newNoteItem.appendChild(noteContent);
+                newNoteItem.appendChild(deleteButton);
+                noteList.appendChild(newNoteItem);
+
+                document.getElementById("newNote").value = ""; // Limpiar el área de texto después de agregar una nota
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/9f183085cb.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

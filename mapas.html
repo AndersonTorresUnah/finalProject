@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+
+    <!-- Enlaces a las bibliotecas Leaflet y Bootstrap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166);
+            font-size: 14px;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-box {
+            width: 80%;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .login-box img.logo {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        #map {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .custom-swal {
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+        }
+
+        .custom-swal .swal2-title {
+            color: #6E48AA;
+            font-size: 24px;
+        }
+
+        .custom-swal .swal2-content {
+            color: #555;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .custom-swal .social-icons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .custom-swal .social-icons a {
+            text-decoration: none;
+            color: #fff;
+            display: inline-block;
+            background: #6E48AA;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .custom-swal .social-icons a i {
+            font-size: 24px;
+            margin-right: 5px;
+        }
+
+        .custom-swal .social-icons a:hover {
+            background: #4b367c;
+            color: #fff;
+        }
+
+        /* Estilos adicionales */
+
+        footer {
+            margin-top: 20px;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: space-around;
+            color: #fff;
+            font-size: 24px;
+        }
+
+        #compartirRedes {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-box">
+        <!-- Imagen del logo -->
+        <img src="/16924fd5-16e9-4977-b508-4fc59150fb99.png" alt="Logo Cultural Education" class="logo">
+
+        <h2>Resultados</h2>
+        <p>Aquí se muestran los resultados obtenidos.</p>
+
+        <!-- Contenedor del mapa -->
+        <div id="map"></div>
+        <button style="background: #6E48AA; border-radius: 20px; color: black; font-weight: bold;" id="mostrarResultados">Mostrar Resultados</button>
+
+        <!-- Footer con iconos -->
+        <footer>
+            <div class="footer-icons">
+                <!--<i class="fa-solid fa-user" id="perfilUsuario"></i>-->
+                <i class="fa-solid fa-house" id="casa" onclick="irAPagina('app.html')"></i>
+                <i class="fa-solid fa-square-share-nodes" id="compartirRedes"></i>
+            </div>
+        </footer>
+        <!-- Fin del footer -->
+    </div>
+
+    <!-- Script para inicializar y mostrar el mapa -->
+    <script>
+        document.getElementById('mostrarResultados').addEventListener('click', function () {
+            // Datos de ejemplo
+            let title = 'Resultados';
+            let description = 'Aquí se muestran los resultados obtenidos.';
+
+            // Crea un contenedor para el mapa
+            const mapContainer = document.createElement('div');
+            mapContainer.id = 'map';  // ID del contenedor del mapa
+            mapContainer.style.height = '300px';  // Establece la altura del mapa
+
+            // Agrega el contenedor del mapa al DOM
+            document.body.appendChild(mapContainer);
+
+            // Inicializa el mapa
+            const map = L.map('map').setView([40.7128, -74.0060], 13);  // Coordenadas del centro del mapa (Nueva York)
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: ''
+            }).addTo(map);
+
+            // Marcadores de ubicaciones ficticias
+            const locations = [
+                { name: 'Lugar 1', coordinates: [40.7128, -74.0060] },
+                { name: 'Lugar 2', coordinates: [40.7231, -73.9843] },
+                { name: 'Lugar 3', coordinates: [40.7488, -73.9857] }
+            ];
+
+            locations.forEach(location => {
+                L.marker(location.coordinates).addTo(map).bindPopup(location.name);
+            });
+        });
+
+        // Script para compartir en redes sociales
+        document.getElementById('compartirRedes').addEventListener('click', function () {
+            // Ventana emergente de SweetAlert2
+            Swal.fire({
+                title: 'Compartir en Redes Sociales',
+                html: `
+                    <div class="social-icons">
+                        <a href="#" onclick="compartirFacebook()"><i class="fab fa-facebook"></i></a>
+                        <a href="#" onclick="compartirTwitter()"><i class="fab fa-twitter"></i></a>
+                        <a href="#" onclick="compartirInstagram()"><i class="fab fa-instagram"></i></a>
+                        <a href="#" onclick="compartirTikTok()"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" onclick="compartirWhatsApp()"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                `,
+                showCancelButton: true,
+                cancelButtonText: 'Cancelar',
+                customClass: {
+                    container: 'custom-swal'
+                }
+            });
+        });
+
+        // Funciones para compartir en redes sociales (puedes agregar tu lógica de compartir)
+        function compartirFacebook() {
+            Swal.fire('Compartido en Facebook', '', 'success');
+        }
+
+        function compartirTwitter() {
+            Swal.fire('Compartido en Twitter', '', 'success');
+        }
+
+        function compartirInstagram() {
+            Swal.fire('Compartido en Instagram', '', 'success');
+        }
+
+        function compartirTikTok() {
+            Swal.fire('Compartido en TikTok', '', 'success');
+        }
+
+        function compartirWhatsApp() {
+            Swal.fire('Compartido en WhatsApp', '', 'success');
+        }
+
+        // Función para redirigir a una página al hacer clic en un icono
+        function irAPagina(pagina) {
+            window.location.href = pagina;
+        }
+    </script>
+
+    <!-- Enlace al script de Bootstrap (puedes ajustar la versión según tus necesidades) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Enlace al kit de iconos FontAwesome -->
+    <script src="https://kit.fontawesome.com/9f183085cb.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
