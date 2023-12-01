@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: linear-gradient(to right, #6E48AA, #FFD166);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            width: 400px;
+            padding: 40px;
+            background: rgba(0, 0, 0, .5);
+            box-sizing: border-box;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .login-box img {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .login-box h2 {
+            margin: 0 0 30px;
+            padding: 0;
+            color: #fff;
+        }
+
+        .login-box .user-box {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .login-box .user-box input {
+            width: 100%;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            border-bottom: 1px solid #fff;
+            outline: none;
+            background: transparent;
+        }
+
+        .login-box .user-box label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #fff;
+            pointer-events: none;
+            transition: .5s;
+        }
+
+        .login-box .user-box input:focus~label,
+        .login-box .user-box input:valid~label {
+            top: -20px;
+            left: 0;
+            color: #03e9f4;
+            font-size: 12px;
+        }
+
+        .login-box form #boton {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            color: #03e9f4;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            letter-spacing: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .login-box #boton:hover {
+            background: #03e9f4;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 100px #03e9f4;
+        }
+
+        .login-box #boton span {
+            display: none;
+        }
+
+        .login-box .forgot-password {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .login-box img.logo {
+            width: 50%;
+            margin-bottom: 20px;
+        }
+
+        .login-box img.translate {
+            width: 30%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .instruction {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative; /* Añadido para el posicionamiento del contenido */
+        }
+
+        .close-modal {
+            color: #aaa;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .code-input {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .code-input input {
+            width: 40px;
+            text-align: center;
+            font-size: 16px;
+            margin: 0 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .validation-animation {
+            display: none;
+            margin-top: 10px;
+            color: #03e9f4;
+            font-size: 16px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .validated {
+            color: #4caf50;
+            animation: pulse 1s infinite;
+        }
+
+        #validate-button {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background: #03e9f4;
+            color: #fff;
+            border: none;
+            font-size: 14px;
+            text-decoration: none;
+            text-transform: uppercase;
+            overflow: hidden;
+            transition: .5s;
+            letter-spacing: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #validate-button:hover {
+            background: #fff;
+            color: #03e9f4;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+        <img src="/16924fd5-16e9-4977-b508-4fc59150fb99.png" alt="Logo Cultural Education" class="logo">
+        <h2>Recuperar Contraseña</h2>
+        <p class="instruction">Ingrese la dirección de correo electrónico asociada a su cuenta para recuperar la contraseña.</p>
+
+        <form>
+            <div class="user-box">
+                <input type="text" name="" required="">
+                <label>Correo Electrónico</label>
+            </div>
+
+            <div class="user-box">
+                <input type="password" name="" required="">
+                <label>Contraseña</label>
+            </div>
+
+            <div class="">
+                <a id="boton" onclick="openModal()" class="">Enviar Código</a>
+            </div>
+        </form>
+
+        <p class="forgot-password">
+            ¿Recordaste tu contraseña? <a href="/Index.html">Inicia Sesión</a>
+        </p>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal">&times;</span>
+            <p>Se ha enviado un código a tu correo electrónico para poder cambiar tu contraseña.</p>
+            <div class="code-input">
+                <input type="text" maxlength="1" required>
+                <input type="text" maxlength="1" required>
+                <input type="text" maxlength="1" required>
+                <input type="text" maxlength="1" required>
+                <!-- Agrega más campos si es necesario -->
+            </div>
+            <a id="validate-button" onclick="validateCode()">Validar</a>
+            <div class="validation-animation" id="validation-animation">Validando...</div>
+        </div>
+    </div>
+
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        // Open the modal
+        function openModal() {
+            document.getElementById('myModal').style.display = 'flex';
+        }
+
+        // Close the modal
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // Validate the code
+        function validateCode() {
+            var validationAnimation = document.getElementById('validation-animation');
+            validationAnimation.style.display = 'block';
+            validationAnimation.textContent = 'Validando...';
+
+            // Simulate validation delay (you can replace this with actual logic)
+            setTimeout(function () {
+                validationAnimation.textContent = 'Validado';
+                document.getElementById('validate-button').style.pointerEvents = 'none';
+                // Redirect to another page
+                window.location.href = "/cambiarContraseña.html";
+            }, 3000);
+        }
+    </script>
+
+</body>
+
+</html>

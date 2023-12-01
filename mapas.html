@@ -154,18 +154,20 @@
             // Agrega el contenedor del mapa al DOM
             document.body.appendChild(mapContainer);
 
-            // Inicializa el mapa
-            const map = L.map('map').setView([40.7128, -74.0060], 13);  // Coordenadas del centro del mapa (Nueva York)
+           // Inicializa el mapa
+            const map = L.map('map').setView([14.0818, -87.2068], 13);  
+            // Coordenadas del centro del mapa (Tegucigalpa, Honduras)
+
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: ''
             }).addTo(map);
 
-            // Marcadores de ubicaciones ficticias
+            // Marcadores de ubicaciones ficticias en Honduras
             const locations = [
-                { name: 'Lugar 1', coordinates: [40.7128, -74.0060] },
-                { name: 'Lugar 2', coordinates: [40.7231, -73.9843] },
-                { name: 'Lugar 3', coordinates: [40.7488, -73.9857] }
+            { name: 'Gracias a Dios', coordinates: [15.7534, -84.3551] },
+            { name: 'San Pedro Sula', coordinates: [15.5049, -88.0250] },
+            { name: 'La Ceiba', coordinates: [15.7594, -86.7819] }
             ];
 
             locations.forEach(location => {
